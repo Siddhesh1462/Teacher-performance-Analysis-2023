@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center;">
+  <h2 style="margin-top: 100px; margin-bottom: 50px;text-align: center; color: #008cba; ">Login as a student</h2>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+<style>
+  .messages {
+    color: blue;
+  }
+</style>
+
+  <form method="POST" id="login-form" action="">
+    
+    {% csrf_token %}
+    
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" autocomplete="off" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" autocomplete="off" required>
+    
+    <button type="submit" >Login</button>
+
+  </form>
+
+  <p style="margin-top:80px; text-align:center;">Don't have an account? <a href="/student_registration">Register now</a>.</p>
+  
+{% endblock %}

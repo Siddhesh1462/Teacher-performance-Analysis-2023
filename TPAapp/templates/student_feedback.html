@@ -1,0 +1,111 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}
+  Student_Feedback - My Project
+{% endblock %}
+
+{% block content %}
+
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 85px;
+    }
+    
+    h1 {
+      font-size: 34px;
+      margin: 40px auto;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .button {
+      padding: 10px 20px; 
+      margin: 20px;
+      background-color: #008cba;
+      color: #fff;
+      font-size: 16px;
+      text-transform: none; /* Updated to retain original case */
+      border-radius: 5px; 
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 250px;
+      height: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative; /* Added position relative */
+    }
+    
+    .button:hover {
+      background-color: white; /* Updated hover background color */
+      color:#008cba;
+      border:1px solid black;
+    }
+    
+    .button:hover::before {
+      content: attr(data-subject);
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #008cba;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      opacity: 0.8;
+      white-space: nowrap;
+      transition: opacity 0.3s ease; /* Added transition for opacity */
+      pointer-events: none; /* Prevent the hover tooltip from being interactive */
+    }
+    
+    .button:hover::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #008cba;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>Select Subject & Give Feedback</h1>
+  
+  <div class="button-container" style="margin-top:30px">
+    <a href="/mathematics_one"><button class="button" data-subject="Mathematics 1">Mathematics 1</button></a>
+    <a href="/mechanics"><button class="button" data-subject="Mechanics">Mechanics</button></a>
+  </div>
+  
+  <div class="button-container">
+    <a href="/comp_programming"><button class="button" data-subject="Computer Programming">Computer Programming</button></a>
+    <a href="/basic_electronics"><button class="button" data-subject="Basic Electronics">Basic Electronics</button></a>
+  </div>
+  
+  <div class="button-container">
+    <a href="/dip"><button class="button" data-subject="Digital Image Processing">Digital Image Processing</button></a>
+  </div>
+  
+  <script>
+    // Add any JavaScript code if needed
+  </script>
+</body>
+ 
+{% endblock %}

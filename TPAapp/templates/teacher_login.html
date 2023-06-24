@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center;">
+  <h2 style="margin-top: 100px; margin-bottom: 50px;text-align: center; ">Login as a Teacher</h2>
+</div>
+
+<style>
+  .messages {
+    color: blue;
+  }
+ 
+  /* Default button styles */
+  button {
+    margin-top: 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #008cba;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+  }
+  
+  /* Hover effect */
+  button:hover {
+    background-color: rgb(17, 120, 160);
+    color: #fff;
+  }
+  h2 {
+    color: rgb(17, 120, 160);
+  }
+  label {
+    padding-top: 10px;
+  }
+</style>
+
+<form method="POST" id="login-form" action="">
+  {% csrf_token %}
+  <label for="subject_code">Subject Code:</label>
+  <input type="text" id="subject_code" name="subject_code" autocomplete="off" required>
+    
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" autocomplete="off" required>
+  <button type="submit">Login</button>
+</form>
+{% endblock %}

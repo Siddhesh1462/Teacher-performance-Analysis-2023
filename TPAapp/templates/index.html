@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Home - My Project
+  
+{% endblock %}
+
+{% block content %}
+
+  
+  <section class="hero-section">
+    <h1 style=" padding-top:40px; padding-bottom:0px; font-size:35px;">Teacher's Performance Analysis</h1>
+    <h3 style=" padding-top:10px;color:rgb(17, 120, 160);">Dr.Babasaheb Ambedkar Technological University Lonere</h3>
+    <h3 style=" padding-top:10px;padding-bottom:20px;color:rgb(17, 120, 160);">"Electronics and Telecommunication"</h3>
+    <p style="font-size:22px">Welcome to the Teacher Performance Analysis project!
+
+      Our project aims to help educational institutions assess and improve the performance of their teachers. We understand the important role teachers play in students' education, and our platform provides valuable insights to administrators and teachers.
+      
+      Using data-driven methods and advanced analytics, we evaluate different aspects of teacher performance such as student feedback, academic results, and classroom observations. By analyzing this information, we provide useful feedback to support decision-making and help teachers enhance their skills.</p>
+    <div class="login-buttons">
+      <a href="\student_login" class="login-button">Student Login</a>
+      <a href="\teacher_login" class="login-button">Teacher Login</a>
+      <a href="\admin_login" class="login-button">Admin Login</a>
+    </div>
+  </section>
+
+{% endblock %}
+ 

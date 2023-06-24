@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <style>
+    nav ul li a {
+      text-decoration: none;
+      color: #008cba;
+      padding: 10px 30px;
+    }
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      
+      z-index: 1;
+      margin-top: 8px;
+      padding: 8px 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #008cba;
+      padding: 8px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #008cba;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="#">EXTC </a>
+        </div>
+        <nav>
+          <div class="menu-icon">
+            <div class="nav-icon"></div>
+            <div class="nav-icon"></div>
+            <div class="nav-icon"></div>
+          </div>
+          <ul>
+            <b><li><a href="\m1_teacher_home">Home</a></li></b>
+           
+            <b><li><a href="\home">log out</a></li> </b>
+            
+          </ul>
+        </nav>
+      </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer>
+    <div class="container">
+    <b><p>&copy; 2023 Teacher Performance Analysis Project</p></b>
+    </div>
+  </footer>
+  <script>
+    $(document).ready(function() {
+      $('.menu-icon').click(function() {
+        $('nav ul').toggleClass('nav-active');
+      });
+    });
+    </script>
+</body>
+</html>
+ 

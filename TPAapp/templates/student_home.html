@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}
+  Student_Home - My Project
+{% endblock %}
+
+{% block content %}
+  <div class="welcome-message" style="text-align: center; margin-top: 150px; margin-bottom: 50px;">
+    <h1 style="color: #008cba;">Welcome, {{ student_name }}!</h1>
+  </div>
+  {% if messages %}
+    <ul class="messages" style="text-align: center; margin-top: 25px; color: #008cba;">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <section class="student-content" style="text-align: center; margin: 50px auto;">
+    
+    <p style="font-size: 22px;">Thank you for using our Education Management System. Your feedback is valuable to us.</p>
+    <p style="font-size: 22px;">Please take a moment to provide your feedback on your learning experience.</p>
+    <p style="font-size: 22px;">Your input helps us improve the quality of teaching and create a better learning environment for everyone.</p>
+    
+  </section>
+  <div style="text-align: center;">
+    <a href="{% url 'student_feedback' %}" class="feedback-link" style="font-size: 22px; padding: 10px 20px; border-radius: 5px; background-color: #008cba; color: #fff; text-decoration: none; display: inline-block;">Provide Feedback</a>
+  </div>
+  
+<style>
+  .feedback-link {
+    transition: background-color 0.3s;
+  }
+  
+  .feedback-link:hover {
+    background-color: white;
+    color:#008cba;
+    border:1px solid black;
+  }
+  </style>
+  
+{% endblock %}

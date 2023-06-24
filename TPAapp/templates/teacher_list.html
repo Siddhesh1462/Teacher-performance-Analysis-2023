@@ -1,0 +1,28 @@
+{% extends 'base4.html' %}
+{% load static %}
+
+{% block title %}
+  teachers Data
+{% endblock %}
+{% block content %}
+<h1 style="margin-top: 100px; text-align: center;">Teachers List</h1>
+<table style="border-collapse: collapse; width: 80%; margin-top: 30px; margin-left: auto; margin-right: auto;">
+
+  <thead>
+    <tr style="border-bottom: 1px solid #008cba;">
+      <th style="border: 1px solid #008cba; padding: 8px; text-align: center;">Sr. No.</th>
+      <th style="border: 1px solid #008cba; padding: 8px; text-align: center;">Name</th>
+      <th style="border: 1px solid #008cba; padding: 8px; text-align: center;">Subject Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for teacher in teachers %}
+    <tr>
+      <td style="border: 1px solid #008cba; padding: 8px; text-align: center;">{{ forloop.counter }}</td>
+      <td style="border: 1px solid #008cba; padding: 8px; text-align: center;">{{ teacher.0 }}</td>
+      <td style="border: 1px solid #008cba; padding: 8px; text-align: center;">{{ teacher.1 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%endblock%}

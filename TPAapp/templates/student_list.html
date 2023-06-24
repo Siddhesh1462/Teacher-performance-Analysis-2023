@@ -1,0 +1,69 @@
+{% extends 'base4.html' %}
+{% load static %}
+
+{% block title %}
+  Students Data
+{% endblock %}
+
+{% block content %}
+<style>
+    
+    .student-table {
+        border-collapse: collapse;
+        width: 100%;
+        
+      }
+      
+      .student-table th,
+      .student-table td {
+        border: 1px solid #ccc;
+        padding: 4px;
+      }
+      
+      .student-table th {
+        background-color: #f2f2f2;
+      }
+      h1{
+        margin-top: 80px;
+        color: #008cba;
+        text-align: center;
+      }
+</style>
+<h1>Register Students</h1>
+<!-- Add a search form -->
+<form method="GET" action="{% url 'student_list' %}" style="margin-top: 8px; width: 300px; display: flex; align-items: center; background: white;">
+  <input type="text" name="search_prn" placeholder="Search by PRN" style="border: 1px solid black; padding: 5px; margin-right: 5px;margin-bottom: 0px;">
+  <button type="submit" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">Search</button>
+</form>
+
+  
+  <table class="student-table">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>Name</th>
+        <th>PRN</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for serial_number, student in students %}
+        <tr style="text-align:center;">
+          <td>{{ serial_number }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.prn }}</td>
+          <td>{{ student.email }}</td>
+          <td>
+            <!-- Add delete button with appropriate URL -->
+            <form method="POST" action="{% url 'delete_student' student.id %}" style="padding:0px;">
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  {%endblock%}

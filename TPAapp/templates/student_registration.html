@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 style="margin-top:80px; margin-bottom: 30px; text-align:center; color: #008cba;">Register as a student</h2>
+  <form method="POST" id="registration-form" action="">
+
+    {% csrf_token %}
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+      
+    <label for="prn">PRN No:</label>
+    <input type="text" id="prn" name="prn" required>
+      
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" autocomplete="off" required>
+      
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" autocomplete="off" required>
+      
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm_password" required>
+      
+        
+      
+      
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}

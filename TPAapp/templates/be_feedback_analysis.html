@@ -1,0 +1,136 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}
+Feedback Analysis - {{ subject_code }}
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+        
+        .feedback-form {
+          text-align: center;
+          max-width: 900px;
+          margin: 20px auto;
+          margin-top: 50px;
+          border:1px solid;
+          padding: 5px;
+        }
+        
+        .form-heading {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+        
+        .question {
+          font-size: 18px;
+          margin-bottom: 20px;
+          text-align: left;
+          color:#008cba;
+          padding-left: 20px;
+        }
+        
+        @media (max-width: 600px) {
+          .question {
+            margin-left: 0;
+          }
+        }
+      </style>
+</head>
+<body>
+    <h2 style="margin-top:100px; margin-bottom: 40px; text-align:center; color:#008cba;"> Basic Electronics Student Feedback</h2>
+    <canvas id="feedbackChart" width="380" height="120" ></canvas>
+    <script>
+        const processedData = {{ processed_data|safe }};
+        
+        const questionLabels = Object.keys(processedData);
+        const responseLabels = ['poor', 'good', 'very-good', 'excellent'];
+
+        const data = {
+            labels: responseLabels,
+            datasets: questionLabels.map(question => {
+                return {
+                    label: question,
+                    data: responseLabels.map(response => processedData[question][response]),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1,
+                };
+            })
+        };
+
+        const ctx = document.getElementById('feedbackChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Responses',
+                        },
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Responses',
+                        },
+                    },
+                },
+            },
+        });
+    </script>
+    <div class="feedback-form">
+        <h1 class="form-heading" style="font-size:30px; padding-top:25px; margin-bottom:20px;">Feedback Questions</h1>
+        
+       
+        <div class="question">
+          <label for="question1"> 1: How would you rate the clarity of the teacher's explanations?</label>
+        </div>
+      
+        <div class="question">
+          <label for="question2"> 2: How effective were the examples and demonstrations in helping you understand the concepts?</label>
+        </div>
+      
+        <div class="question">
+          <label for="question3"> 3: Did the teacher encourage class participation and discussion?</label>
+        </div>
+      
+        <div class="question">
+          <label for="question4"> 4: How well did the teacher provide individual attention and support when needed?</label>
+        </div>
+      
+        <div class="question">
+          <label for="question5"> 5: Were the assignments and assessments aligned with the topics covered in class?</label>
+        </div>
+        
+        <div class="question">
+          <label for="question6"> 6: Overall, how would you rate your learning experience in this Mathematics class?</label>
+        </div>
+      </div>
+</body>
+</html>
+
+{% endblock %}

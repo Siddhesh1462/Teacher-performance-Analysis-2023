@@ -1,0 +1,101 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}
+Results Analysis
+{% endblock %}
+
+{% block content %}
+<style>
+    .chart-container {
+        margin-top:40px;
+        margin-bottom:100px;
+        width: 60%;
+
+        height: 400px;
+    
+    }
+    h2{
+        color:#008cba;
+        margin-top:90px;
+        text-align:center;
+    }
+</style>
+<h2>Basic Electronics Results</h2>
+<div class="chart-container">
+    <canvas id="performanceChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script>
+    const processedData = {{ processed_data|safe }};
+
+    const prn = processedData.prn;
+    const ca1Marks = processedData.ca1_marks;
+    const ca1OutOf = processedData.ca1_out_of;
+    const ca2Marks = processedData.ca2_marks;
+    const ca2OutOf = processedData.ca2_out_of;
+    const midsemMarks = processedData.midsem_marks;
+    const midsemOutOf = processedData.midsem_out_of;
+    const endsemMarks = processedData.endsem_marks;
+    const endsemOutOf = processedData.endsem_out_of;
+
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: prn,
+            datasets: [
+                {
+                    label: 'CA1',
+                    data: ca1Marks,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'CA2',
+                    data: ca2Marks,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'MidSemester',
+                    data: midsemMarks,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'EndSemester',
+                    data: endsemMarks,
+                    backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'PRN'
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Marks'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

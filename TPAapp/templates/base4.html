@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <style>
+    nav ul li a {
+      text-decoration: none;
+      color: #008cba;
+      padding: 10px 30px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      flex-direction: column;
+    }
+    
+    .dropdown-content a {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      color: black;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 10px;
+  z-index: 1;
+}
+
+.dropdown-subject:hover .dropdown-links {
+  display: block;
+}
+
+.dropdown-links {
+  display: none;
+  margin-top: 10px;
+}
+.dropdown-links a {
+  display: block;
+  background-color: #008cba;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="#">EXTC </a>
+        </div>
+        <nav>
+          <div class="menu-icon">
+            <div class="nav-icon"></div>
+            <div class="nav-icon"></div>
+            <div class="nav-icon"></div>
+          </div>
+          <ul>
+            <b><li><a href="\admin_home">Home</a></li></b>
+            <b><li><a href="\student_list">Students</a></li> </b>
+            <b><li><a href="\teacher_list">Teachers</a></li> </b>
+            <div class="dropdown">
+              <b><li><a href="#">view_performance</a></li></b>
+              <div class="dropdown-content">
+                <div class="dropdown-subject">
+                  <a href="#">Mathematics 1</a>
+                  <div class="dropdown-links">
+                    <a href="\feedback_analysis">Student Feedback analysis</a>
+                    <a href="\attendance_analysis">Attendance analysis</a>
+                    <a href="\result_analysis">Result analysis</a>
+                  </div>
+                </div>
+                <div class="dropdown-subject">
+                  <a href="#">Computer Programming</a>
+                  <div class="dropdown-links">
+                    <a href="\cp_feedback_analysis">Student Feedback analysis</a>
+                    <a href="\cp_attendance_analysis">Attendance analysis</a>
+                    <a href="\cp_result_analysis">Result analysis</a>
+                  </div>
+                </div>
+                <div class="dropdown-subject">
+                  <a href="#">Mechanics</a>
+                  <div class="dropdown-links">
+                    <a href="\mech_feedback_analysis">Student Feedback analysis</a>
+                    <a href="\mech_attendance_analysis">Attendance analysis</a>
+                    <a href="\mech_result_analysis">Result analysis</a>
+                  </div>
+                </div>
+                <div class="dropdown-subject">
+                  <a href="#">Basic Electronics</a>
+                  <div class="dropdown-links">
+                    <a href="\be_feedback_analysis">Student Feedback analysis</a>
+                    <a href="\be_attendance_analysis">Attendance analysis</a>
+                    <a href="\be_result_analysis">Result analysis</a>
+                  </div>
+                </div>
+                <div class="dropdown-subject">
+                  <a href="#">Digital Image Processing</a>
+                  <div class="dropdown-links">
+                    <a href="\dip_feedback_analysis">Student Feedback analysis</a>
+                    <a href="\dip_attendance_analysis">Attendance analysis</a>
+                    <a href="\dip_result_analysis">Result analysis</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <b><li><a href="\home">log out</a></li> </b>
+            
+          </ul>
+        </nav>
+      </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer>
+    <div class="container">
+    <b><p>&copy; 2023 Teacher Performance Analysis Project</p></b>
+    </div>
+  </footer>
+  <script>
+    $(document).ready(function() {
+      $('.menu-icon').click(function() {
+        $('nav ul').toggleClass('nav-active');
+      });
+    });
+    </script>
+</body>
+</html>
+ 

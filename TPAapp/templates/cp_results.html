@@ -1,0 +1,96 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}
+  CP_Results
+{% endblock %}
+
+{% block content %}
+<style>
+    .form-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        
+        
+    }
+    h2{
+        color:#008cba;
+        margin-bottom:15px;
+    }
+    .form-container {
+        width: 450px;
+        height: 450px;
+    }
+    .form-container h2 {
+        text-align: center;
+    }
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom:10px;
+    }
+    .form-container form input {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="form-wrapper">
+    <div class="form-container">
+        <h2 style="margin-top: 120px;">CA1</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="cp" value="ca1">
+            <input type="text" name="prn_ca1" placeholder="PRN Number" required>
+            <input type="number" name="marks_ca1" placeholder="Marks" required>
+            <input type="number" name="out_of_ca1" placeholder="Out of" value="10" readonly>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2 style="margin-top: 120px;">CA2</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="cp" value="ca2">
+            <input type="text" name="prn_ca2" placeholder="PRN Number" required>
+            <input type="number" name="marks_ca2" placeholder="Marks" required>
+            <input type="number" name="out_of_ca2" placeholder="Out of" value="10" readonly>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="form-container">
+        <h2 style="margin-top: 10px;">Mid-Semester</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="cp" value="mid_semester">
+            <input type="text" name="prn_midsem" placeholder="PRN Number" required>
+            <input type="number" name="marks_midsem" placeholder="Marks" required>
+            <input type="number" name="out_of_midsem" placeholder="Out of" value="20" readonly>            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2 style="margin-top: 10px;">End-Semester</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="cp" value="end_semester">
+            <input type="text" name="prn_endsem" placeholder="PRN Number" required>
+            <input type="number" name="marks_endsem" placeholder="Marks" required>
+            <input type="number" name="out_of_endsem" placeholder="Out of" value="60" required>            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

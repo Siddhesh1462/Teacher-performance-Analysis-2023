@@ -1,0 +1,205 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}
+  Feedback Form - Basic Electronics
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  
+    .feedback-form {
+      text-align: center;
+      max-width: 800px;
+      
+      margin: 80px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+    }
+  
+    .form-heading {
+      font-size: 24px;
+      margin-bottom: 20px;
+      
+    }
+  
+    .sub-heading {
+      font-size: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid;
+      padding-bottom : 35px;
+    }
+  
+    .form-row {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  
+    .form-row label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color:  rgb(17, 120, 160);;
+    }
+  
+    .form-row select {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+  
+    .submit-button {
+      text-align: center;
+      margin-top: 30px;
+    }
+  
+    .submit-button button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #008cba;
+      color: #fff;
+      cursor: pointer;
+    }
+  
+    @media (max-width: 600px) {
+      .feedback-form {
+        padding: 20px;
+      }
+      .form-row label {
+        width:400px;
+      }
+      
+    }
+  </style>
+</head>
+
+
+  
+  <div class="feedback-form">
+      
+    <h1 class="form-heading" style="font-size:30px; padding-top:25px;">Feedback Form</h1>
+    <h2 class="sub-heading" style="margin-bottom: 40px; color: rgb(17, 120, 160);">Subject: <span id="subject">Basic Electronics</span> | Teacher: <span id="teacher">Bhavesh Patil</span></h2>
+    <form action="{% url 'basic_electronics' %}" method="post" id="feedback-form" style='width:100%; background-color:white;'>
+      {% csrf_token %}
+      <div class="form-row" style="display:flex;">
+        <label for="prn"  style="width:200px ;">Enter Your PRN No :</label>
+        <input type="text" id="prn" name="prn" style="border:1px solid; width:370px; margin-left: 15px;height: 30px;">
+      </div>
+    
+      <div class="form-row" style="display:flex;">
+        <label for="date"  style="width:200px ;">Today's Date     :</label>
+        <input type="date" id="date" name="date" style="border:1px solid;width: 370px; margin-left: 15px; height: 30px;" >
+      </div>
+    
+      <div class="form-row">
+        <span style="display:flex;width:600px;">
+          <label for="question1" class="label" style="width:50px;"> 1:</label>
+          <label for="question1" class="label1" >How would you rate the clarity of the explanations provided during today's lecture? </label>
+        </span>
+        <select id="question1" name="question1">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+    
+      <div class="form-row">
+        <span style="display:flex; width:600px;">
+          <label for="question2" style="width:50px;"> 2: </label>
+          <label for="question2" class="label1">Did you find the examples and demonstrations helpful in understanding the concepts? </label>
+
+        </span>
+        <select id="question2" name="question2">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+    
+      <div class="form-row">
+        <span style="display:flex;width:600px;">
+          <label for="question3" style="width:50px;"> 3: </label>
+          <label for="question3" class="label1">Were you encouraged to participate and engage in class discussions during the lecture? </label>
+        </span>
+        <select id="question3" name="question3">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <span style="display:flex;width:600px;">
+          <label for="question4" style="width:50px;"> 4: </label>
+          <label for="question4" class="label1">How well did the instructor provide individual attention and support when needed? </label>
+        </span>
+        <select id="question4" name="question4">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+    
+      <div class="form-row">
+        <span style="display:flex;width:600px;">
+          <label for="question5" style="width:50px;"> 5: </label>
+          <label for="question5" class="label1">Were the assignments and assessments aligned with the topics covered in the lecture? </label>
+        </span>
+        <select id="question5" name="question5">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+      
+      <div class="form-row">
+        <span style="display:flex;width:600px;">
+          <label for="question6" style="width:50px;"> 6: </label>
+          <label for="question6" class="label1">Overall, how would you rate your learning experience in today's basic electronics lecture? </label>
+        </span>
+        <select id="question6" name="question6">
+          <option value="poor">Poor</option>
+          <option value="good">Good</option>
+          <option value="very-good">Very Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
+      </div>
+    
+      <div class="submit-button">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  
+
+{% if form.errors %}
+  <ul>
+  {% for field in form %}
+    {% for error in field.errors %}
+      <li>{{ field.label }}: {{ error }}</li>
+    {% endfor %}
+  {% endfor %}
+  </ul>
+{% endif %}
+    
+
+
+       
+
+{% endblock %}

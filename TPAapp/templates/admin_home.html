@@ -1,0 +1,45 @@
+{% extends 'base4.html' %}
+{% load static %}
+
+{% block title %}
+  Admin_Home - My Project
+{% endblock %}
+
+{% block content %}
+<style>
+  .admin-home {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+}
+
+.task-list li {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+</style>
+<div class="admin-home">
+  <h1>Welcome, Admin!</h1>
+  
+  <h2>Admin Tasks:</h2>
+  <p class="task-list">
+      - View Student Data<br>
+      - Delete Student Data<br>
+      - View Teacher Performance<br>
+      - Generate Performance Graphs<br>
+      - View Student Performance<br>
+      - Analyze Attendance<br>
+      - Analyze Results
+  </p>
+</div>
+
+
+
+  
+{% endblock %}
